@@ -13,7 +13,7 @@ from wikipedia_search import *
 def talk(words):
     engine = pyttsx3.init()
     voices = engine.getProperty('voices')
-    engine.setProperty('voice', voices[1].id)
+    engine.setProperty('voice', voices[3].id)
     engine.setProperty("rate", 145)
     engine.say(words)
     engine.runAndWait()
@@ -48,11 +48,9 @@ def command():
 def working(task):
     if 'hello' in task:
         talk('Hello')
-    elif 'stop' in task:
-        talk('Останавливаю')
+    elif 'stop' in task or 'goodbye' in task:
+        talk('Have a good day!')
         sys.exit()
-    elif 'кто ты' in task:
-        talk('Я - Автономный помощник Залупа 0.1')
     elif 'open' in task:
         if 'chrome' in task or 'browser' in task:
             subprocess.Popen('C:\Program Files (x86)\Google\Chrome\Application\chrome.exe')
@@ -66,8 +64,12 @@ def working(task):
         talk(request_to_wiki(task))
     # weather
     elif 'weather' in task:
+        talk('I know the weather of the following countries: USA, Poland and Germany. Which country do you want to know'
+             'the weather?')
+        country = command()
         talk('What city weather do you want to know?')
-        talk(get_weather(command()))
+        city = command()
+        talk(get_weather(country, city))
 
 
 while True:
