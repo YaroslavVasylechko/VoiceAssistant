@@ -5,7 +5,7 @@ Console application - a voice assistant written for yourself(not yet completed)
 Requirements
 ------------
 
-PyAudio 0.2.11
+PyAudio 0.2.11  
 SpeechRecognition 3.8.1
 bf4 3.9.3
 fuzzuwuzzy 0.18.0 + Levenshtein(for faster calculation)
